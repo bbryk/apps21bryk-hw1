@@ -31,7 +31,7 @@ public class TemperatureSeriesAnalysis {
         double average_value;
         double sum = 0;
         int quantity = 0;
-        if (this.temperatureSeries.length == 0) throw new IllegalArgumentException("The series is empty");
+        if (this.temperatureSeries.length == 0) {throw new IllegalArgumentException("The series is empty");}
         for (int i = 0; i < this.actual_size; i++) {
             sum += this.temperatureSeries[i];
             quantity += 1;
@@ -42,7 +42,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double deviation() {
-        if (this.temperatureSeries.length == 0) throw new IllegalArgumentException("The series is empty");
+        if (this.temperatureSeries.length == 0){ throw new IllegalArgumentException("The series is empty");}
         double sum = 0;
         double average_temp = this.average();
         for (int i = 0; i < this.actual_size; i++) {
@@ -53,7 +53,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double min() throws IllegalArgumentException {
-        if (this.temperatureSeries.length == 0) throw new IllegalArgumentException("The series is empty");
+        if (this.temperatureSeries.length == 0) {throw new IllegalArgumentException("The series is empty");}
 
         double min_value = this.temperatureSeries[0];
         for (int i = 0; i < this.actual_size; i++) {
@@ -66,7 +66,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double max() throws IllegalArgumentException {
-        if (this.temperatureSeries.length == 0) throw new IllegalArgumentException("The series is empty");
+        if (this.temperatureSeries.length == 0) {throw new IllegalArgumentException("The series is empty");}
 
         double max_value = this.temperatureSeries[0];
 
@@ -79,7 +79,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double findTempClosestToZero() throws IllegalArgumentException {
-        if (this.temperatureSeries.length == 0) throw new IllegalArgumentException("The series is empty");
+        if (this.temperatureSeries.length == 0) {throw new IllegalArgumentException("The series is empty");}
 
         double closest_value = Math.abs(this.temperatureSeries[0]);
 
@@ -94,7 +94,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double findTempClosestToValue(double tempValue) {
-        if (this.temperatureSeries.length == 0) throw new IllegalArgumentException("The series is empty");
+        if (this.temperatureSeries.length == 0) {throw new IllegalArgumentException("The series is empty");}
 
         double closest_value = Math.abs(this.temperatureSeries[0] - tempValue);
 
@@ -151,7 +151,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public TempSummaryStatistics summaryStatistics() {
-        if (this.temperatureSeries.length == 0) throw new IllegalArgumentException("The series is empty");
+        if (this.temperatureSeries.length == 0) {throw new IllegalArgumentException("The series is empty");}
         double avgTemp = this.average();
         double devTemp = this.deviation();
         double minTemp = min();
