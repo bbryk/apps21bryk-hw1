@@ -3,6 +3,7 @@ package ua.edu.ucu.tempseries;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 
+
 public class TemperatureSeriesAnalysis {
     double[] temperatureSeries;
     int capacity;
@@ -71,7 +72,7 @@ public class TemperatureSeriesAnalysis {
         double max_value = this.temperatureSeries[0];
 
         for (int i = 0; i < this.actual_size; i++) {
-            if (temperatureSeries[i] < max_value) {
+            if (temperatureSeries[i] > max_value) {
                 max_value = temperatureSeries[i];
             }
         }

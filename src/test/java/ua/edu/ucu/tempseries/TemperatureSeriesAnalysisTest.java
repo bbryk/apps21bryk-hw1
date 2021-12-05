@@ -53,4 +53,90 @@ public class TemperatureSeriesAnalysisTest {
     }
 
 
+
+    @Test
+    public void testTestAverage() {
+        double[] temperatureSeries = {1.2,3.4,2.5,3.4,4.5};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 3.0;
+        double actualResult = seriesAnalysis.average();
+
+        assertEquals(expResult, actualResult,0.00001);
+    }
+    @Test
+    public void testDeviation() {
+        double[] temperatureSeries = {1.2,3.4,2.5,3.4,4.5};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 1.100908715561831;
+        double actualResult = seriesAnalysis.deviation();
+
+        assertEquals(expResult, actualResult,0.00001);
+    }
+    @Test
+    public void testMin() {
+        double[] temperatureSeries = {123.9,1.2,3.4,2.5,3.4,4.5};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 1.2;
+        double actualResult = seriesAnalysis.min();
+
+        assertEquals(expResult, actualResult,0.00001);
+    }
+    @Test
+    public void testMax() {
+        double[] temperatureSeries = {1.2,3.4,2.5,69.0,3.4,4.5};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 69.0;
+        double actualResult = seriesAnalysis.max();
+
+        assertEquals(expResult, actualResult,0.00001);
+    }
+    @Test
+    public void testFindTempClosestToZero() {
+        double[] temperatureSeries = {1.2,3.4,2.5,0.2,3.4,4.5};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 0.2;
+        double actualResult = seriesAnalysis.findTempClosestToZero();
+
+        assertEquals(expResult, actualResult,0.00001);
+    }
+    @Test
+    public void testFindTempClosestToZeroWithNegative() {
+        double[] temperatureSeries = {1.2,3.4,-0.2,2.5,0.2,3.4,4.5};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 0.2;
+        double actualResult = seriesAnalysis.findTempClosestToZero();
+
+        assertEquals(expResult, actualResult,0.00001);
+    }
+    @Test
+    public void testFindTempClosestToZeroWithNegativeAnswer() {
+        double[] temperatureSeries = {1.2,3.4,-0.2,2.5,0.21,3.4,4.5};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = -0.2;
+        double actualResult = seriesAnalysis.findTempClosestToZero();
+
+        assertEquals(expResult, actualResult,0.00001);
+    }
+    @Test
+    public void testFindTempClosestToValue() {
+
+    }
+    @Test
+    public void testFindTempsLessThen() {
+    }
+    @Test
+    public void testFindTempsGreaterThen() {
+    }
+    @Test
+    public void testSummaryStatistics() {
+    }
+    @Test
+    public void testAddTemps() {
+    }
+    @Test
+    public void testGetTemperatureSeries() {
+    }
+    @Test
+    public void testGetActual_size() {
+    }
 }
