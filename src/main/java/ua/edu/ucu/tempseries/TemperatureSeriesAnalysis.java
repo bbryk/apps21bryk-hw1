@@ -1,17 +1,26 @@
 package ua.edu.ucu.tempseries;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
     double[] temperatureSeries;
     int capacity;
     int actual_size;
+    static final double absoluteZero = -273.0;
 
     public TemperatureSeriesAnalysis() {
-
+        this.temperatureSeries = new double[]{};
+        this.capacity = 0;
+        this.actual_size = 0;
     }
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
+        for (double temp : temperatureSeries) {
+            if (temp < absoluteZero) {
+                throw new InputMismatchException();
+            }
+        }
 
         this.temperatureSeries = Arrays.copyOf(temperatureSeries, temperatureSeries.length);
         this.capacity = this.temperatureSeries.length;
@@ -40,8 +49,7 @@ public class TemperatureSeriesAnalysis {
             sum += Math.pow(temperatureSeries[i] - average_temp, 2);
         }
 
-        double square_deviation = Math.sqrt(sum / temperatureSeries.length);
-        return square_deviation;
+        return Math.sqrt(sum / temperatureSeries.length);
     }
 
     public double min() throws IllegalArgumentException {
@@ -108,11 +116,11 @@ public class TemperatureSeriesAnalysis {
         }
 
 
-        double lessArr[] = new double[counter];
+        double [] lessArr= new double[counter];
 
         int last_ind = 0;
 
-        for (int i = 0; i < this.temperatureSeries.length; i++) {
+        for (int i = 0; i < this.actual_size; i++) {
             if (temperatureSeries[i] < tempValue) {
                 lessArr[last_ind] = temperatureSeries[i];
                 last_ind += 1;
@@ -130,9 +138,9 @@ public class TemperatureSeriesAnalysis {
             if (this.temperatureSeries[i] >= tempValue) counter += 1;
         }
 
-        double greaterArr[] = new double[counter];
+        double[] greaterArr = new double[counter];
         int last_ind = 0;
-        for (int i = 0; i < this.temperatureSeries.length; i++) {
+        for (int i = 0; i < this.actual_size; i++) {
             if (temperatureSeries[i] >= tempValue) {
                 greaterArr[last_ind] = temperatureSeries[i];
                 last_ind += 1;
@@ -155,6 +163,16 @@ public class TemperatureSeriesAnalysis {
 
 
     public int addTemps(double... temps) {
+        if (this.capacity == 0) {
+            this.temperatureSeries = new double[]{0};
+            this.actual_size = 0;
+            this.capacity = 1;
+        }
+        for (double temp : temps) {
+            if (temp < absoluteZero) {
+                throw new InputMismatchException();
+            }
+        }
         for (double temperature : temps) {
             if (this.capacity != this.actual_size) {
                 this.temperatureSeries[this.actual_size] = temperature;
