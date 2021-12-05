@@ -1,9 +1,11 @@
 package ua.edu.ucu.tempseries;
 
+import lombok.Getter;
+
 import java.util.Arrays;
 import java.util.InputMismatchException;
 
-
+@Getter
 public class TemperatureSeriesAnalysis {
     double[] temperatureSeries;
     int capacity;
@@ -210,11 +212,4 @@ public class TemperatureSeriesAnalysis {
         return this.actual_size;
     }
 
-    public double[] getTemperatureSeries() {
-        return this.temperatureSeries;
-    }
-
-    public int getActual_size() {
-        return this.actual_size;
-    }
 }

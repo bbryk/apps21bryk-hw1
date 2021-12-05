@@ -168,18 +168,39 @@ public class TemperatureSeriesAnalysisTest {
 
     @Test
     public void testSummaryStatistics() {
+        double[] temperatureSeries = {1.2, 2.0, -0.2,};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        TempSummaryStatistics actualResult = seriesAnalysis.summaryStatistics();
 
+
+        double actAverage = actualResult.getAvgTemp();
+        double actDeviation = actualResult.getDevTemp();
+        double actMin = actualResult.getMinTemp();
+        double actMax = actualResult.getMaxTemp();
+
+        double expAverage = 1.0;
+        double expDeviation = 0.9092121131323904;
+        double expMin = -0.2;
+        double expMax = 2.0;
+        assertEquals(expAverage, actAverage, 0.0001);
+        assertEquals(expDeviation, actDeviation, 0.0001);
+        assertEquals(expMin, actMin, 0.0001);
+        assertEquals(expMax, actMax, 0.0001);
     }
 
     @Test
     public void testAddTemps() {
+        double[] temperatureSeries = {1.2, 3.4, -0.2};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double[] additionalTemps = {3.2, 13.4};
+        int actualSize = seriesAnalysis.addTemps(additionalTemps);
+        int expSize = 5;
+        double[] expectedArr = {1.2, 3.4, -0.2, 3.2, 13.4,0.0};
+        double[] actualArr = seriesAnalysis.getTemperatureSeries();
+        assertEquals(expSize, actualSize);
+        assertArrayEquals(expectedArr,actualArr, 0.0001 );
+
     }
 
-    @Test
-    public void testGetTemperatureSeries() {
-    }
 
-    @Test
-    public void testGetActual_size() {
-    }
 }
