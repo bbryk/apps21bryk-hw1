@@ -195,10 +195,10 @@ public class TemperatureSeriesAnalysisTest {
         double[] additionalTemps = {3.2, 13.4};
         int actualSize = seriesAnalysis.addTemps(additionalTemps);
         int expSize = 5;
-        double[] expectedArr = {1.2, 3.4, -0.2, 3.2, 13.4,0.0};
+        double[] expectedArr = {1.2, 3.4, -0.2, 3.2, 13.4, 0.0};
         double[] actualArr = seriesAnalysis.getTemperatureSeries();
         assertEquals(expSize, actualSize);
-        assertArrayEquals(expectedArr,actualArr, 0.0001 );
+        assertArrayEquals(expectedArr, actualArr, 0.0001);
 
     }
 
