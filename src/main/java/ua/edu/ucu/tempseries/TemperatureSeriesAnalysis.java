@@ -7,7 +7,7 @@ import java.util.InputMismatchException;
 
 @Getter
 public class TemperatureSeriesAnalysis {
-    static final double AbsoluteZero = -273.0;
+    static final double ABSOLUTEZERO = -273.0;
     private double[] temperatureSeries;
     private int capacity;
     private int actualSize;
@@ -20,7 +20,7 @@ public class TemperatureSeriesAnalysis {
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
         for (double temp : temperatureSeries) {
-            if (temp < AbsoluteZero) {
+            if (temp < ABSOLUTEZERO) {
                 throw new InputMismatchException();
             }
         }
@@ -54,7 +54,8 @@ public class TemperatureSeriesAnalysis {
         double sum = 0;
         double averageTemp = this.average();
         for (int i = 0; i < this.actualSize; i++) {
-            sum += (temperatureSeries[i] - averageTemp) * (temperatureSeries[i] - averageTemp);
+            sum += (temperatureSeries[i] - averageTemp) *
+                    (temperatureSeries[i] - averageTemp);
         }
 
         return Math.sqrt(sum / temperatureSeries.length);
@@ -199,7 +200,7 @@ public class TemperatureSeriesAnalysis {
             this.capacity = 1;
         }
         for (double temp : temps) {
-            if (temp < AbsoluteZero) {
+            if (temp < ABSOLUTEZERO) {
                 throw new InputMismatchException();
             }
         }
