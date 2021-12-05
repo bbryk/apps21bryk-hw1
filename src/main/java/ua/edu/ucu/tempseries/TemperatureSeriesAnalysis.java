@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 
 
+
 public class TemperatureSeriesAnalysis {
     double[] temperatureSeries;
     int capacity;
@@ -94,6 +95,7 @@ public class TemperatureSeriesAnalysis {
         return closest_value;
     }
 
+
     public double findTempClosestToValue(double tempValue) {
         if (this.temperatureSeries.length == 0) {throw new IllegalArgumentException("The series is empty");}
 
@@ -102,7 +104,7 @@ public class TemperatureSeriesAnalysis {
         for (int i = 0; i < this.actual_size; i++) {
             if (Math.abs(temperatureSeries[i] - tempValue) <= Math.abs(closest_value - tempValue)) {
                 if (Math.abs(temperatureSeries[i] - tempValue) == Math.abs(closest_value - tempValue))
-                    closest_value = Math.abs(closest_value);
+                    closest_value = Math.max(closest_value,temperatureSeries[i]);
                 else closest_value = temperatureSeries[i];
             }
 
